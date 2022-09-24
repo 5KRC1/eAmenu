@@ -47,7 +47,7 @@ requirements = python3,kivy,kivymd,pillow,requests,idna,charset_normalizer,urlli
 
 # (str) Presplash of the application
 #presplash.filename = %(source.dir)s/data/presplash.png
-presplash.filename = ./assets/images/eAmenu_splash_screen.png
+presplash.filename = ./assets/images/eAmenu_logo.png
 
 # (str) Icon of the application
 #icon.filename = %(source.dir)s/data/icon.png

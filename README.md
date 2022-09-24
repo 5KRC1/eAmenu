@@ -1,4 +1,4 @@
-![eAmenu logo](https://github.com/5KRC1/eAmenu/assets/images/eAmenu_logo.png "eAmenu logo")
+![eAmenu logo](https://github.com/5KRC1/eAmenu/blob/master/assets/images/eAmenu_logo.png "eAmenu logo")
 # eAmenu
 The "bill of fare" for eAsistent school meals.
 
