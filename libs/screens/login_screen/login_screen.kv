@@ -1,0 +1,32 @@
+#:import Window kivy.core.window.Window
+#:import Toolbar libs.components.toolbar
+#:import threading threading
+
+<LoginScreen>:
+  AnchorLayout:
+    size_hint_y: None
+    height: Window.size[1] - toolbar.height
+    MDBoxLayout:
+      adaptive_height: True
+      size_hint_x: .8
+      orientation: "vertical"
+      spacing: dp(5)
+      MDTextField:
+        id: username
+        hint_text: "Username/Email"
+      MDTextField:
+        id: password
+        hint_text: "Password"
+      AnchorLayout:
+        size_hint_y: None
+        height: button.height
+        MDRaisedButton:
+          id: button
+          text: "Login"
+          elevation: 0
+          on_release: threading.Thread(target=root.login).start()
+  
+  Toolbar:
+    id: toolbar
+    title: "eAmenu"
+    left_action_items: [["menu", lambda x:app.root.ids.nav_drawer.set_state("open")]]

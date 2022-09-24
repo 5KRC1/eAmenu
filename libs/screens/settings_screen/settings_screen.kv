@@ -1,0 +1,123 @@
+#:import Window kivy.core.window.Window
+#:import Toolbar libs.components.toolbar
+#:import SettingsScreen __init__
+#:import threading threading
+
+<SettingsScreen>:
+  ScrollView:
+    size_hint_y: None
+    height: Window.size[1] - toolbar.height
+    MDBoxLayout:
+      orientation: "vertical"
+      adaptive_height: True
+      padding: dp(8)
+      spacing: 20
+      # disliked foods
+      MDBoxLayout:
+        orientation: "vertical"
+        adaptive_height: True
+        spacing: dp(8)
+        MDLabel:
+          font_style: "Button"
+          text: "foods"
+          size_hint_y: None
+          height: self.texture_size[1]
+        MDBoxLayout:
+          size_hint_y: None
+          height: dp(80)
+          spacing: dp(8)
+          MDTextField:
+            id: disliked_foods
+            hint_text: "Foods you don't like"
+            pos_hint: {"center_y": .5}
+          AnchorLayout:
+            size_hint_x: None
+            width: btn.width
+            MDRaisedButton:
+              id: btn
+              text: "Add"
+              elevation: 0
+              on_release: threading.Thread(target=root.add_disliked_food).start()
+        MDLabel:
+          size_hint_y: None
+          height: self.texture_size[1]
+          text: "foods"
+        ScrollView:
+          size_hint_y: None
+          height: disliked_foods_menu.height
+          do_scroll_x: True
+          do_scroll_y: False
+          MDBoxLayout:
+            id: disliked_foods_menu
+            size_hint_x: None
+            width: self.minimum_width
+            adaptive_height: True
+            spacing: dp(8)
+      # border line
+      AnchorLayout:
+        canvas:
+          Color: 
+            rgba: .5, .5, .5, .2
+          Line:
+            width: 1
+            rectangle: self.x - 8, self.y, Window.size[0], 1
+      # menu select
+      MDBoxLayout:
+        adaptive_height: True
+        orientation: "vertical"
+        spacing: dp(8)
+        MDLabel:
+          font_style: "Button"
+          text: "menus"
+          size_hint_y: None
+          height: self.texture_size[1]
+        MDLabel:
+          size_hint_y: None
+          height: self.texture_size[1]
+          text: "Select a menu to choose if there is a food you don't like on the menu."
+        ScrollView:
+          size_hint_y: None
+          height: menus.height
+          do_scroll_x: True
+          do_scroll_y: False
+          MDBoxLayout:
+            id: menus
+            size_hint_x: None
+            width: self.minimum_width
+            adaptive_height: True
+            spacing: dp(8)
+      # border line
+#      AnchorLayout:
+#        canvas:
+#          Color:
+#            rgba: .5, .5, .5, .2
+#          Line:
+#            width: 1
+#            rectangle: self.x - 8, self.y, Window.size[0], 1
+
+#      MDBoxLayout:
+#        orientation: "vertical"
+#        adaptive_height: True
+#        spacing: dp(5)
+#        MDLabel:
+#          font_style: "Button"
+#          text: "login"
+#        MDTextField:
+#          id: username
+#          hint_text: "Username"
+#        MDTextField:
+#          id: password
+#          hint_text: "Password"
+#        AnchorLayout:
+#          size_hint_y: None
+#          height: login_button.height
+#          MDRaisedButton:
+#            id: login_button
+#            text: "Login"
+#            elevation: 0
+
+  Toolbar:
+    id: toolbar
+    title: "Settings"
+    left_action_items: [["menu", lambda x: app.root.ids.nav_drawer.set_state("open")]]
+

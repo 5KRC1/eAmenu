@@ -1,0 +1,91 @@
+#:import main libs.screens.main_screen.MainScreen
+#:import MenuItemMain __init__
+#:import MenuItemSettings __init__
+#:import threading threading
+
+<MenuItemMain>:
+  id: meal
+  padding: dp(16)
+  size_hint_y:None
+  height: self.minimum_height if app.root.ids.manager.current == "main" else dp(100)
+  size_hint_x: 1 if app.root.ids.manager.current == "main" else None
+  width: dp(150)
+  md_bg_color: self.theme_cls.accent_color if root.selected else self.theme_cls.primary_color
+  radius: (20,)
+  elevation: 2
+  on_release: self.prijava_odjava("prijava") if not root.selected else self.prijava_odjava("odjava")
+  MDBoxLayout:
+    id: inner
+    orientation: "vertical"
+    adaptive_height: True
+    spacing: dp(8)
+    MDLabel:
+      text: root.text
+      theme_text_color: "Custom"
+      text_color: 1,1,1,1
+      size_hint_y: None
+      height: self.texture_size[1]
+    MDLabel:
+      disabled: True if not root.secondary_text else False
+      opacity: 0 if not root.secondary_text else 1
+      text: root.secondary_text
+      theme_text_color: "Custom"
+      text_color: 1,1,1,1
+      size_hint_y: None
+      height: self.texture_size[1]
+  MDIconButton:
+    icon: root.icon
+    theme_text_color: "Custom"
+    text_color: 1,1,1,1
+    _no_ripple_effect: True
+
+
+<MenuItemSettings>:
+  padding: dp(16)
+  size_hint_y:None
+  height: dp(100)
+  #height: inner.height + dp(16)
+  size_hint_x: None
+  width: dp(150)
+  md_bg_color: self.theme_cls.accent_color if root.selected else self.theme_cls.primary_color
+  radius: (20,)
+  on_release: threading.Thread(target=root.choose_menu, args=(self,)).start()
+  MDBoxLayout:
+    id: inner
+    orientation: "vertical"
+    adaptive_height: True
+    spacing: dp(8)
+    MDLabel:
+      text: root.text
+      theme_text_color: "Custom"
+      text_color: 1,1,1,1
+      size_hint_y: None
+      height: self.texture_size[1]
+    MDLabel:
+      disabled: True if not root.secondary_text else False
+      opacity: 0 if not root.secondary_text else 1
+      text: root.secondary_text
+      theme_text_color: "Custom"
+      text_color: 1,1,1,1
+      size_hint_y: None
+      height: self.texture_size[1]
+  MDIconButton:
+    icon: root.icon
+    theme_text_color: "Custom"
+    text_color: 1,1,1,1
+    _no_ripple_effect: True
+
+<DislikedFood>:
+  size_hint_x: None
+  width: label.width + dp(24)
+  adaptive_width: True
+  md_bg_color: app.theme_cls.bg_dark
+  on_release: threading.Thread(target=self.remove_disliked_food, args=(self.text,)).start()
+  AnchorLayout:
+    adaptive_width: True
+    Label:
+      id: label
+      text: root.text
+      size_hint: None, None
+      size: self.texture_size
+  

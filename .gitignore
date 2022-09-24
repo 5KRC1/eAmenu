@@ -1,0 +1,6 @@
+database.db
+env
+bin
+.buildozer
+__pycache__
+**/__pycache__

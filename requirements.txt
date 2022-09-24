@@ -1,0 +1,16 @@
+beautifulsoup4==4.10.0
+bs4==0.0.1
+certifi==2021.10.8
+charset-normalizer==2.0.12
+Cython==0.29.28
+docutils==0.18.1
+idna==3.3
+Kivy==2.1.0
+Kivy-Garden==0.1.5
+# kivymd @ git+https://github.com/kivymd/KivyMD.git@2e0f1d058ce5d26bbd513c7bfbd7c702cfd4548d
+kivymd=1.0.2
+Pillow==9.0.1
+Pygments==2.11.2
+requests==2.28.1
+soupsieve==2.3.1
+urllib3==1.26.9

@@ -1,0 +1,28 @@
+#:import MainScreen libs.screens.main_screen
+#:import SettingsScreen libs.screens.settings_screen
+#:import LoginScreen libs.screens.login_screen
+#:import ContentNavigationDrawer libs.components.content_navigation_drawer
+
+MDScreen:
+  MDNavigationLayout:
+    ScreenManager:
+      id: manager
+      MainScreen:
+        id: main
+        name: "main"
+      
+      SettingsScreen:
+        id: settings
+        name: "settings"
+
+      LoginScreen:
+        id: login
+        name: "login"
+
+    MDNavigationDrawer:
+      id: nav_drawer
+      enable_swiping: False
+      radius: (0, 16, 16, 0)
+      ContentNavigationDrawer:
+        id: content_drawer
+

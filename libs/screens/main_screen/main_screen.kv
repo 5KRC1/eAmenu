@@ -1,0 +1,73 @@
+#:import Window kivy.core.window.Window
+#:import Toolbar libs.components.toolbar
+#:import threading threading
+#:import MainScreen __init__
+# #:import MenuItemMain libs.components.menu_item.MenuItemMain
+
+<MainScreen>:
+  RelativeLayout:
+    size_hint_y: None
+    height: Window.size[1] - toolbar.height
+    orientation: "vertical"
+    ScrollView:
+      # menu's scroll view
+      do_scroll_y: True
+      do_scroll_x: False
+      size_hint_y: None
+      height: Window.size[1] - toolbar.height - date_tabs.height
+      MDList:
+        id: menu_list
+        spacing: dp(12)
+        padding: dp(12)
+        size_hint_y: None
+        height: self.minimum_height
+
+    RelativeLayout:
+      id: date_tabs
+      pos_hint: {"top": 1}
+      size_hint_y: None
+      height: date_bar.height
+      CommonElevationBehavior:
+        elevation: 2
+        size_hint_y: None
+        height: dp(30)
+      MDBoxLayout:
+        # date bar
+        id: date_bar
+        md_bg_color: app.theme_cls.primary_color
+        adaptive_height: True
+        MDIconButton:
+          icon: "menu-left"
+          on_release: threading.Thread(target=root.date_backward).start()
+          pos_hint: {"center_y": .5}
+          theme_icon_color: "Custom"
+          icon_color: app.theme_cls.bg_light
+        MDLabel:
+          # date_of_menu
+          id: date_label
+          halign: "center"
+          theme_text_color: "Custom"
+          text_color: app.theme_cls.bg_light
+        MDIconButton:
+          icon: "menu-right"
+          on_release: threading.Thread(target=root.date_forward).start()
+          pos_hint: {"center_y": .5}
+          theme_icon_color: "Custom"
+          icon_color: app.theme_cls.bg_light
+
+  Toolbar:
+    id: toolbar
+    title: "eAmenu"
+    left_action_items: [["menu", lambda x: app.root.ids.nav_drawer.set_state("open")]]
+    elevation: 0
+
+<MyRecycleView@RecycleView>:
+  viewclass: "MenuItem"
+  RecycleBoxLayout:
+    spacing: dp(12)
+    padding: dp(12)
+    default_size_hint: 1, None
+    size_hint_y: None
+    height: self.minimum_height
+    orientation: "vertical"
+
