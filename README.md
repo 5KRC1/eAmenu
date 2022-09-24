@@ -23,37 +23,37 @@ Download the apk file [here](https://www.dasadweb.tk/files/eAmenu.apk).
 Follow linux/windows terminal instructions first.
 Then connect your phone via USB and in its settings [enable "USB Debugging"](https://www.lifewire.com/enable-usb-debugging-android-4690927) (developer options).
 After run the following in the command prompt.
-'''
+```
 buildozer android debug deploy run
-'''
+```
 This will create .buildozer (hidden) and bin folder. Inside bin folder there is also APK file, but the previous command should already deploy it on your phone.
 
 ### Linux
 Purely GUI. Service does not run in the background (it does not change meals yet)!
 In your terminal clone this project with the following command.
-'''
+```
 git clone https://github.com/5KRC1/eAmenu
-'''
+```
 Next let's navigate into the newly created folder.
-'''
+```
 cd eAmenu
-'''
+```
 Here, either in python virtual environment (recommended) or just system python, run the following to install needed requirements.
-'''
+```
 pip install -r requirements.txt
-'''
+```
 (virtual environment) or
-'''
+```
 pip3 install -r requirements.txt
-'''
+```
 After the installation is complete, simply run main.py.
-'''
+```
 python main.py
-'''
+```
 (virtual environment) or
-'''
+```
 python3 main.py
-'''
+```
 
 ### Windows
 Working on it...
