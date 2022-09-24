@@ -17,7 +17,7 @@ The service also runs in the background (on Android) with python for android.
 ## Install
 ### Android
 #### APK
-Download the apk file [here](https://www.dasadweb.tk/files/eAmenu.apk).
+Download the apk file [here](https://api.dasadweb.tk/api/files/eAmenu.apk).
 
 #### Buildozer
 Follow linux/windows terminal instructions first.
